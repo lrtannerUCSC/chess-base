@@ -61,6 +61,89 @@ void Chess::FENtoBoard(const std::string& fen) {
     // 3: castling availability (KQkq or -)
     // 4: en passant target square (in algebraic notation, or -)
     // 5: halfmove clock (number of halfmoves since the last capture or pawn advance)
+    int i = 0;
+    for (char c : fen) {
+        if (c == 'p') {
+            Bit* piece = PieceForPlayer(1, Pawn);
+            piece->setPosition(_grid->getSquare(i % 8, i / 8)->getPosition());
+            _grid->getSquare(i % 8, i / 8)->setBit(piece);
+            i++;
+        }
+        if (c == 'P') {
+            Bit* piece = PieceForPlayer(0, Pawn);
+            piece->setPosition(_grid->getSquare(i % 8, i / 8)->getPosition());
+            _grid->getSquare(i % 8, i / 8)->setBit(piece);
+            i++;
+        }
+        if (c == 'r') {
+            Bit* piece = PieceForPlayer(1, Rook);
+            piece->setPosition(_grid->getSquare(i % 8, i / 8)->getPosition());
+            _grid->getSquare(i % 8, i / 8)->setBit(piece);
+            i++;
+        }
+        if (c == 'R') {
+            Bit* piece = PieceForPlayer(0, Rook);
+            piece->setPosition(_grid->getSquare(i % 8, i / 8)->getPosition());
+            _grid->getSquare(i % 8, i / 8)->setBit(piece);
+            i++;
+        }
+        if (c == 'n') {
+            Bit* piece = PieceForPlayer(1, Knight);
+            piece->setPosition(_grid->getSquare(i % 8, i / 8)->getPosition());
+            _grid->getSquare(i % 8, i / 8)->setBit(piece);
+            i++;
+        }
+        if (c == 'N') {
+            Bit* piece = PieceForPlayer(0, Knight);
+            piece->setPosition(_grid->getSquare(i % 8, i / 8)->getPosition());
+            _grid->getSquare(i % 8, i / 8)->setBit(piece);
+            i++;
+        }
+        if (c == 'b') {
+            Bit* piece = PieceForPlayer(1, Bishop);
+            piece->setPosition(_grid->getSquare(i % 8, i / 8)->getPosition());
+            _grid->getSquare(i % 8, i / 8)->setBit(piece);
+            i++;
+        }
+        if (c == 'B') {
+            Bit* piece = PieceForPlayer(0, Bishop);
+            piece->setPosition(_grid->getSquare(i % 8, i / 8)->getPosition());
+            _grid->getSquare(i % 8, i / 8)->setBit(piece);
+            i++;
+        }
+        if (c == 'q') {
+            Bit* piece = PieceForPlayer(1, Queen);
+            piece->setPosition(_grid->getSquare(i % 8, i / 8)->getPosition());
+            _grid->getSquare(i % 8, i / 8)->setBit(piece);
+            i++;
+        }
+        if (c == 'Q') {
+            Bit* piece = PieceForPlayer(0, Queen);
+            piece->setPosition(_grid->getSquare(i % 8, i / 8)->getPosition());
+            _grid->getSquare(i % 8, i / 8)->setBit(piece);
+            i++;
+        }
+        if (c == 'k') {
+            Bit* piece = PieceForPlayer(1, King);
+            piece->setPosition(_grid->getSquare(i % 8, i / 8)->getPosition());
+            _grid->getSquare(i % 8, i / 8)->setBit(piece);
+            i++;
+        }
+        if (c == 'K') {
+            Bit* piece = PieceForPlayer(0, King);
+            piece->setPosition(_grid->getSquare(i % 8, i / 8)->getPosition());
+            _grid->getSquare(i % 8, i / 8)->setBit(piece);
+            i++;
+        }
+        
+        if (c == '/') {
+            continue;
+        }
+        if (std::isdigit(c) && c != '0') {
+            std::cout << c << std::endl;
+            i += c - '0';
+        }
+    }
 }
 
 bool Chess::actionForEmptyHolder(BitHolder &holder)

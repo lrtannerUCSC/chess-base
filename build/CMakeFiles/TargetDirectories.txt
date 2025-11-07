@@ -1,0 +1,9 @@
+C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build/CMakeFiles/Experimental.dir
+C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build/CMakeFiles/Nightly.dir
+C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build/CMakeFiles/Continuous.dir
+C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build/CMakeFiles/NightlyMemoryCheck.dir
+C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build/CMakeFiles/demo.dir
+C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build/CMakeFiles/PACKAGE.dir
+C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build/CMakeFiles/RUN_TESTS.dir
+C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build/CMakeFiles/ZERO_CHECK.dir
