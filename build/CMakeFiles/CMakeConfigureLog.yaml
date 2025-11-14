@@ -35,7 +35,6 @@ events:
     found: "C:/Program Files/CMake/share/cmake-4.1/Modules/CMakeCCompilerId.c.in"
     search_context:
       ENV{PATH}:
-        - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x86"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\VC\\VCPackages"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow"
@@ -126,7 +125,7 @@ events:
       Microsoft (R) Build Engine version 16.11.2+f32259642 for .NET Framework
       Copyright (C) Microsoft Corporation. All rights reserved.
       
-      Build started 11/7/2025 1:45:51 PM.
+      Build started 11/13/2025 6:54:00 PM.
       Project "C:\\Users\\ticky\\Desktop\\UCSC Assignments\\cmpm123\\chess-base\\build\\CMakeFiles\\4.1.2\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
       PrepareForBuild:
         Creating directory "Debug\\".
@@ -134,15 +133,15 @@ events:
       InitializeBuildStatus:
         Creating "Debug\\CompilerIdC.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
       ClCompile:
-        C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x86\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc142.pdb" /external:W0 /Gd /TC /analyze- /FC /errorReport:queue CMakeCCompilerId.c
+        C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc142.pdb" /external:W0 /Gd /TC /FC /errorReport:queue CMakeCCompilerId.c
         CMakeCCompilerId.c
       Link:
-        C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x86\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X86 /SAFESEH Debug\\CMakeCCompilerId.obj
+        C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X64 Debug\\CMakeCCompilerId.obj
         CompilerIdC.vcxproj -> C:\\Users\\ticky\\Desktop\\UCSC Assignments\\cmpm123\\chess-base\\build\\CMakeFiles\\4.1.2\\CompilerIdC\\CompilerIdC.exe
       PostBuildEvent:
         for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
         :VCEnd
-        CMAKE_C_COMPILER=C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\Hostx64\\x86\\cl.exe
+        CMAKE_C_COMPILER=C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\Hostx64\\x64\\cl.exe
       FinalizeBuildStatus:
         Deleting file "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
         Touching "Debug\\CompilerIdC.tlog\\CompilerIdC.lastbuildstate".
@@ -152,7 +151,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:03.96
+      Time Elapsed 00:00:01.66
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -184,8 +183,7 @@ events:
     names:
       - "link"
     candidate_directories:
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/"
+      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/VC/vcpackages/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/"
@@ -233,11 +231,10 @@ events:
       - "C:/Users/ticky/.deno/bin/"
       - "C:/Users/ticky/.dotnet/tools/"
     searched_directories:
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/link.com"
-    found: "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/link.exe"
+      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/link.com"
+    found: "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/link.exe"
     search_context:
       ENV{PATH}:
-        - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x86"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\VC\\VCPackages"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow"
@@ -325,8 +322,7 @@ events:
     names:
       - "lld-link"
     candidate_directories:
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/"
+      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/VC/vcpackages/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/"
@@ -374,12 +370,9 @@ events:
       - "C:/Users/ticky/.deno/bin/"
       - "C:/Users/ticky/.dotnet/tools/"
     searched_directories:
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/lld-link.com"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/lld-link.exe"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/lld-link"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/lld-link.com"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/lld-link.exe"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/lld-link"
+      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/lld-link.com"
+      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/lld-link.exe"
+      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/lld-link"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/lld-link.com"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/lld-link.exe"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/lld-link"
@@ -521,7 +514,6 @@ events:
     found: false
     search_context:
       ENV{PATH}:
-        - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x86"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\VC\\VCPackages"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow"
@@ -607,8 +599,7 @@ events:
     names:
       - "link"
     candidate_directories:
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/"
+      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/VC/vcpackages/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/"
@@ -656,11 +647,10 @@ events:
       - "C:/Users/ticky/.deno/bin/"
       - "C:/Users/ticky/.dotnet/tools/"
     searched_directories:
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/link.com"
-    found: "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/link.exe"
+      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/link.com"
+    found: "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/link.exe"
     search_context:
       ENV{PATH}:
-        - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x86"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\VC\\VCPackages"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow"
@@ -746,8 +736,7 @@ events:
     names:
       - "mt"
     candidate_directories:
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/"
+      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/VC/vcpackages/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/"
@@ -795,12 +784,9 @@ events:
       - "C:/Users/ticky/.deno/bin/"
       - "C:/Users/ticky/.dotnet/tools/"
     searched_directories:
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/mt.com"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/mt.exe"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/mt"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/mt.com"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/mt.exe"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/mt"
+      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/mt.com"
+      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/mt.exe"
+      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/mt"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/mt.com"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/mt.exe"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/mt"
@@ -823,7 +809,6 @@ events:
     found: "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/mt.exe"
     search_context:
       ENV{PATH}:
-        - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x86"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\VC\\VCPackages"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow"
@@ -909,8 +894,7 @@ events:
     names:
       - "lib"
     candidate_directories:
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/"
+      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/VC/vcpackages/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/"
@@ -958,11 +942,10 @@ events:
       - "C:/Users/ticky/.deno/bin/"
       - "C:/Users/ticky/.dotnet/tools/"
     searched_directories:
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/lib.com"
-    found: "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/lib.exe"
+      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/lib.com"
+    found: "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/lib.exe"
     search_context:
       ENV{PATH}:
-        - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x86"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\VC\\VCPackages"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow"
@@ -1055,7 +1038,6 @@ events:
     found: "C:/Program Files/CMake/share/cmake-4.1/Modules/CMakeCXXCompilerId.cpp.in"
     search_context:
       ENV{PATH}:
-        - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x86"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\VC\\VCPackages"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow"
@@ -1146,7 +1128,7 @@ events:
       Microsoft (R) Build Engine version 16.11.2+f32259642 for .NET Framework
       Copyright (C) Microsoft Corporation. All rights reserved.
       
-      Build started 11/7/2025 1:45:56 PM.
+      Build started 11/13/2025 6:54:02 PM.
       Project "C:\\Users\\ticky\\Desktop\\UCSC Assignments\\cmpm123\\chess-base\\build\\CMakeFiles\\4.1.2\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
       PrepareForBuild:
         Creating directory "Debug\\".
@@ -1154,15 +1136,15 @@ events:
       InitializeBuildStatus:
         Creating "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
       ClCompile:
-        C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x86\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc142.pdb" /external:W0 /Gd /TP /analyze- /FC /errorReport:queue CMakeCXXCompilerId.cpp
+        C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc142.pdb" /external:W0 /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
         CMakeCXXCompilerId.cpp
       Link:
-        C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x86\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X86 /SAFESEH Debug\\CMakeCXXCompilerId.obj
+        C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
         CompilerIdCXX.vcxproj -> C:\\Users\\ticky\\Desktop\\UCSC Assignments\\cmpm123\\chess-base\\build\\CMakeFiles\\4.1.2\\CompilerIdCXX\\CompilerIdCXX.exe
       PostBuildEvent:
         for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
         :VCEnd
-        CMAKE_CXX_COMPILER=C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\Hostx64\\x86\\cl.exe
+        CMAKE_CXX_COMPILER=C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\Hostx64\\x64\\cl.exe
       FinalizeBuildStatus:
         Deleting file "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
         Touching "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.lastbuildstate".
@@ -1172,7 +1154,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:01.71
+      Time Elapsed 00:00:01.18
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -1204,8 +1186,7 @@ events:
     names:
       - "lld-link"
     candidate_directories:
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/"
+      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/VC/vcpackages/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/"
@@ -1253,12 +1234,9 @@ events:
       - "C:/Users/ticky/.deno/bin/"
       - "C:/Users/ticky/.dotnet/tools/"
     searched_directories:
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/lld-link.com"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/lld-link.exe"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/lld-link"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/lld-link.com"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/lld-link.exe"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/lld-link"
+      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/lld-link.com"
+      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/lld-link.exe"
+      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/lld-link"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/lld-link.com"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/lld-link.exe"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/lld-link"
@@ -1400,7 +1378,6 @@ events:
     found: false
     search_context:
       ENV{PATH}:
-        - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x86"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\VC\\VCPackages"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow"
@@ -1489,7 +1466,6 @@ events:
     names:
       - "rc"
     candidate_directories:
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/VC/vcpackages/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/"
@@ -1545,13 +1521,10 @@ events:
       - "C:/Program Files/CMake/bin/"
       - "C:/Program Files/CMake/sbin/"
       - "C:/Program Files/CMake/"
-      - "C:/Program Files (x86)/tictactoe/bin/"
-      - "C:/Program Files (x86)/tictactoe/sbin/"
-      - "C:/Program Files (x86)/tictactoe/"
+      - "C:/Program Files/tictactoe/bin/"
+      - "C:/Program Files/tictactoe/sbin/"
+      - "C:/Program Files/tictactoe/"
     searched_directories:
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/rc.com"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/rc.exe"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/rc"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/rc.com"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/rc.exe"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/rc"
@@ -1574,7 +1547,6 @@ events:
     found: "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/rc.exe"
     search_context:
       ENV{PATH}:
-        - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x86"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\VC\\VCPackages"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow"
@@ -1640,12 +1612,12 @@ events:
         - "C:\\Users\\ticky\\.deno\\bin"
         - "C:\\Users\\ticky\\.dotnet\\tools"
         - "C:\\Program Files\\CMake\\bin"
-      CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/tictactoe"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files/tictactoe"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "C:/Program Files"
         - "C:/Program Files (x86)"
         - "C:/Program Files/CMake"
-        - "C:/Program Files (x86)/tictactoe"
+        - "C:/Program Files/tictactoe"
   -
     kind: "try_compile-v1"
     backtrace:
@@ -1655,48 +1627,49 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build/CMakeFiles/CMakeScratch/TryCompile-ngrtv0"
-      binary: "C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build/CMakeFiles/CMakeScratch/TryCompile-ngrtv0"
+      source: "C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build/CMakeFiles/CMakeScratch/TryCompile-pdjy5l"
+      binary: "C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build/CMakeFiles/CMakeScratch/TryCompile-pdjy5l"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
-      CMAKE_EXE_LINKER_FLAGS: "/machine:X86"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
     buildResult:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build/CMakeFiles/CMakeScratch/TryCompile-ngrtv0'
+        Change Dir: 'C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build/CMakeFiles/CMakeScratch/TryCompile-pdjy5l'
         
-        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/MSBuild/Current/Bin/MSBuild.exe" cmTC_de879.vcxproj /p:Configuration=Debug /p:Platform=win32 /p:VisualStudioVersion=16.0 /v:n
+        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/MSBuild/Current/Bin/MSBuild.exe" cmTC_c95cb.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:n
         Microsoft (R) Build Engine version 16.11.2+f32259642 for .NET Framework
         Copyright (C) Microsoft Corporation. All rights reserved.
         
-        Build started 11/7/2025 1:45:59 PM.
-        Project "C:\\Users\\ticky\\Desktop\\UCSC Assignments\\cmpm123\\chess-base\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ngrtv0\\cmTC_de879.vcxproj" on node 1 (default targets).
+        Build started 11/13/2025 6:54:04 PM.
+        Project "C:\\Users\\ticky\\Desktop\\UCSC Assignments\\cmpm123\\chess-base\\build\\CMakeFiles\\CMakeScratch\\TryCompile-pdjy5l\\cmTC_c95cb.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_de879.dir\\Debug\\".
-          Creating directory "C:\\Users\\ticky\\Desktop\\UCSC Assignments\\cmpm123\\chess-base\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ngrtv0\\Debug\\".
-          Creating directory "cmTC_de879.dir\\Debug\\cmTC_de879.tlog\\".
+          Creating directory "cmTC_c95cb.dir\\Debug\\".
+          Creating directory "C:\\Users\\ticky\\Desktop\\UCSC Assignments\\cmpm123\\chess-base\\build\\CMakeFiles\\CMakeScratch\\TryCompile-pdjy5l\\Debug\\".
+          Creating directory "cmTC_c95cb.dir\\Debug\\cmTC_c95cb.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_de879.dir\\Debug\\cmTC_de879.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Creating "cmTC_c95cb.dir\\Debug\\cmTC_c95cb.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
         ClCompile:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x86\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Fo"cmTC_de879.dir\\Debug\\\\" /Fd"cmTC_de879.dir\\Debug\\vc142.pdb" /external:W3 /Gd /TC /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c"
-          Microsoft (R) C/C++ Optimizing Compiler Version 19.29.30154 for x86
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Fo"cmTC_c95cb.dir\\Debug\\\\" /Fd"cmTC_c95cb.dir\\Debug\\vc142.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.29.30154 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
           CMakeCCompilerABI.c
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Fo"cmTC_de879.dir\\Debug\\\\" /Fd"cmTC_de879.dir\\Debug\\vc142.pdb" /external:W3 /Gd /TC /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Fo"cmTC_c95cb.dir\\Debug\\\\" /Fd"cmTC_c95cb.dir\\Debug\\vc142.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c"
         Link:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x86\\link.exe /OUT:"C:\\Users\\ticky\\Desktop\\UCSC Assignments\\cmpm123\\chess-base\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ngrtv0\\Debug\\cmTC_de879.exe" /INCREMENTAL /ILK:"cmTC_de879.dir\\Debug\\cmTC_de879.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build/CMakeFiles/CMakeScratch/TryCompile-ngrtv0/Debug/cmTC_de879.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build/CMakeFiles/CMakeScratch/TryCompile-ngrtv0/Debug/cmTC_de879.lib" /MACHINE:X86  /machine:X86 cmTC_de879.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_de879.vcxproj -> C:\\Users\\ticky\\Desktop\\UCSC Assignments\\cmpm123\\chess-base\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ngrtv0\\Debug\\cmTC_de879.exe
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\ticky\\Desktop\\UCSC Assignments\\cmpm123\\chess-base\\build\\CMakeFiles\\CMakeScratch\\TryCompile-pdjy5l\\Debug\\cmTC_c95cb.exe" /INCREMENTAL /ILK:"cmTC_c95cb.dir\\Debug\\cmTC_c95cb.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build/CMakeFiles/CMakeScratch/TryCompile-pdjy5l/Debug/cmTC_c95cb.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build/CMakeFiles/CMakeScratch/TryCompile-pdjy5l/Debug/cmTC_c95cb.lib" /MACHINE:X64  /machine:x64 cmTC_c95cb.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_c95cb.vcxproj -> C:\\Users\\ticky\\Desktop\\UCSC Assignments\\cmpm123\\chess-base\\build\\CMakeFiles\\CMakeScratch\\TryCompile-pdjy5l\\Debug\\cmTC_c95cb.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_de879.dir\\Debug\\cmTC_de879.tlog\\unsuccessfulbuild".
-          Touching "cmTC_de879.dir\\Debug\\cmTC_de879.tlog\\cmTC_de879.lastbuildstate".
-        Done Building Project "C:\\Users\\ticky\\Desktop\\UCSC Assignments\\cmpm123\\chess-base\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ngrtv0\\cmTC_de879.vcxproj" (default targets).
+          Deleting file "cmTC_c95cb.dir\\Debug\\cmTC_c95cb.tlog\\unsuccessfulbuild".
+          Touching "cmTC_c95cb.dir\\Debug\\cmTC_c95cb.tlog\\cmTC_c95cb.lastbuildstate".
+        Done Building Project "C:\\Users\\ticky\\Desktop\\UCSC Assignments\\cmpm123\\chess-base\\build\\CMakeFiles\\CMakeScratch\\TryCompile-pdjy5l\\cmTC_c95cb.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:05.33
+        Time Elapsed 00:00:01.09
         
       exitCode: 0
   -
@@ -1709,7 +1682,7 @@ events:
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
-        linker tool for 'C': C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/HostX64/x86/link.exe
+        linker tool for 'C': C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/HostX64/x64/link.exe
         implicit libs: []
         implicit objs: []
         implicit dirs: []
@@ -1724,7 +1697,7 @@ events:
       - "C:/Program Files/CMake/share/cmake-4.1/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
       - "CMakeLists.txt:2 (project)"
     message: |
-      Running the C compiler's linker: "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/HostX64/x86/link.exe" "-v"
+      Running the C compiler's linker: "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/HostX64/x64/link.exe" "-v"
       Microsoft (R) Incremental Linker Version 14.29.30154.0
       Copyright (C) Microsoft Corporation.  All rights reserved.
   -
@@ -1736,49 +1709,50 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build/CMakeFiles/CMakeScratch/TryCompile-2oezko"
-      binary: "C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build/CMakeFiles/CMakeScratch/TryCompile-2oezko"
+      source: "C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build/CMakeFiles/CMakeScratch/TryCompile-x9gen2"
+      binary: "C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build/CMakeFiles/CMakeScratch/TryCompile-x9gen2"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
       CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
-      CMAKE_EXE_LINKER_FLAGS: "/machine:X86"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
     buildResult:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build/CMakeFiles/CMakeScratch/TryCompile-2oezko'
+        Change Dir: 'C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build/CMakeFiles/CMakeScratch/TryCompile-x9gen2'
         
-        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/MSBuild/Current/Bin/MSBuild.exe" cmTC_c4178.vcxproj /p:Configuration=Debug /p:Platform=win32 /p:VisualStudioVersion=16.0 /v:n
+        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/MSBuild/Current/Bin/MSBuild.exe" cmTC_b9a62.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:n
         Microsoft (R) Build Engine version 16.11.2+f32259642 for .NET Framework
         Copyright (C) Microsoft Corporation. All rights reserved.
         
-        Build started 11/7/2025 1:46:05 PM.
-        Project "C:\\Users\\ticky\\Desktop\\UCSC Assignments\\cmpm123\\chess-base\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2oezko\\cmTC_c4178.vcxproj" on node 1 (default targets).
+        Build started 11/13/2025 6:54:05 PM.
+        Project "C:\\Users\\ticky\\Desktop\\UCSC Assignments\\cmpm123\\chess-base\\build\\CMakeFiles\\CMakeScratch\\TryCompile-x9gen2\\cmTC_b9a62.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_c4178.dir\\Debug\\".
-          Creating directory "C:\\Users\\ticky\\Desktop\\UCSC Assignments\\cmpm123\\chess-base\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2oezko\\Debug\\".
-          Creating directory "cmTC_c4178.dir\\Debug\\cmTC_c4178.tlog\\".
+          Creating directory "cmTC_b9a62.dir\\Debug\\".
+          Creating directory "C:\\Users\\ticky\\Desktop\\UCSC Assignments\\cmpm123\\chess-base\\build\\CMakeFiles\\CMakeScratch\\TryCompile-x9gen2\\Debug\\".
+          Creating directory "cmTC_b9a62.dir\\Debug\\cmTC_b9a62.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_c4178.dir\\Debug\\cmTC_c4178.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Creating "cmTC_b9a62.dir\\Debug\\cmTC_b9a62.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
         ClCompile:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x86\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /Fo"cmTC_c4178.dir\\Debug\\\\" /Fd"cmTC_c4178.dir\\Debug\\vc142.pdb" /external:W3 /Gd /TP /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
-          Microsoft (R) C/C++ Optimizing Compiler Version 19.29.30154 for x86
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /Fo"cmTC_b9a62.dir\\Debug\\\\" /Fd"cmTC_b9a62.dir\\Debug\\vc142.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.29.30154 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
           CMakeCXXCompilerABI.cpp
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /Fo"cmTC_c4178.dir\\Debug\\\\" /Fd"cmTC_c4178.dir\\Debug\\vc142.pdb" /external:W3 /Gd /TP /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /Fo"cmTC_b9a62.dir\\Debug\\\\" /Fd"cmTC_b9a62.dir\\Debug\\vc142.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
         Link:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x86\\link.exe /OUT:"C:\\Users\\ticky\\Desktop\\UCSC Assignments\\cmpm123\\chess-base\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2oezko\\Debug\\cmTC_c4178.exe" /INCREMENTAL /ILK:"cmTC_c4178.dir\\Debug\\cmTC_c4178.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build/CMakeFiles/CMakeScratch/TryCompile-2oezko/Debug/cmTC_c4178.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build/CMakeFiles/CMakeScratch/TryCompile-2oezko/Debug/cmTC_c4178.lib" /MACHINE:X86  /machine:X86 cmTC_c4178.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_c4178.vcxproj -> C:\\Users\\ticky\\Desktop\\UCSC Assignments\\cmpm123\\chess-base\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2oezko\\Debug\\cmTC_c4178.exe
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\ticky\\Desktop\\UCSC Assignments\\cmpm123\\chess-base\\build\\CMakeFiles\\CMakeScratch\\TryCompile-x9gen2\\Debug\\cmTC_b9a62.exe" /INCREMENTAL /ILK:"cmTC_b9a62.dir\\Debug\\cmTC_b9a62.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build/CMakeFiles/CMakeScratch/TryCompile-x9gen2/Debug/cmTC_b9a62.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build/CMakeFiles/CMakeScratch/TryCompile-x9gen2/Debug/cmTC_b9a62.lib" /MACHINE:X64  /machine:x64 cmTC_b9a62.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_b9a62.vcxproj -> C:\\Users\\ticky\\Desktop\\UCSC Assignments\\cmpm123\\chess-base\\build\\CMakeFiles\\CMakeScratch\\TryCompile-x9gen2\\Debug\\cmTC_b9a62.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_c4178.dir\\Debug\\cmTC_c4178.tlog\\unsuccessfulbuild".
-          Touching "cmTC_c4178.dir\\Debug\\cmTC_c4178.tlog\\cmTC_c4178.lastbuildstate".
-        Done Building Project "C:\\Users\\ticky\\Desktop\\UCSC Assignments\\cmpm123\\chess-base\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2oezko\\cmTC_c4178.vcxproj" (default targets).
+          Deleting file "cmTC_b9a62.dir\\Debug\\cmTC_b9a62.tlog\\unsuccessfulbuild".
+          Touching "cmTC_b9a62.dir\\Debug\\cmTC_b9a62.tlog\\cmTC_b9a62.lastbuildstate".
+        Done Building Project "C:\\Users\\ticky\\Desktop\\UCSC Assignments\\cmpm123\\chess-base\\build\\CMakeFiles\\CMakeScratch\\TryCompile-x9gen2\\cmTC_b9a62.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:01.80
+        Time Elapsed 00:00:01.10
         
       exitCode: 0
   -
@@ -1791,7 +1765,7 @@ events:
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
-        linker tool for 'CXX': C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/HostX64/x86/link.exe
+        linker tool for 'CXX': C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/HostX64/x64/link.exe
         implicit libs: []
         implicit objs: []
         implicit dirs: []
@@ -1806,7 +1780,7 @@ events:
       - "C:/Program Files/CMake/share/cmake-4.1/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
       - "CMakeLists.txt:2 (project)"
     message: |
-      Running the CXX compiler's linker: "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/HostX64/x86/link.exe" "-v"
+      Running the CXX compiler's linker: "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/HostX64/x64/link.exe" "-v"
       Microsoft (R) Incremental Linker Version 14.29.30154.0
       Copyright (C) Microsoft Corporation.  All rights reserved.
   -
@@ -1828,7 +1802,6 @@ events:
     names:
       - "git"
     candidate_directories:
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/VC/vcpackages/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/"
@@ -1884,13 +1857,10 @@ events:
       - "C:/Program Files/CMake/bin/"
       - "C:/Program Files/CMake/sbin/"
       - "C:/Program Files/CMake/"
-      - "C:/Program Files (x86)/tictactoe/bin/"
-      - "C:/Program Files (x86)/tictactoe/sbin/"
-      - "C:/Program Files (x86)/tictactoe/"
+      - "C:/Program Files/tictactoe/bin/"
+      - "C:/Program Files/tictactoe/sbin/"
+      - "C:/Program Files/tictactoe/"
     searched_directories:
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/git.com"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/git.exe"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/git"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/git.com"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/git.exe"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/git"
@@ -1994,7 +1964,6 @@ events:
     found: "C:/Program Files/Git/cmd/git.exe"
     search_context:
       ENV{PATH}:
-        - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x86"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\VC\\VCPackages"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow"
@@ -2060,12 +2029,12 @@ events:
         - "C:\\Users\\ticky\\.deno\\bin"
         - "C:\\Users\\ticky\\.dotnet\\tools"
         - "C:\\Program Files\\CMake\\bin"
-      CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/tictactoe"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files/tictactoe"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "C:/Program Files"
         - "C:/Program Files (x86)"
         - "C:/Program Files/CMake"
-        - "C:/Program Files (x86)/tictactoe"
+        - "C:/Program Files/tictactoe"
   -
     kind: "find-v1"
     backtrace:
@@ -2090,7 +2059,6 @@ events:
       - "cuda-memcheck"
       - "compute-sanitizer"
     candidate_directories:
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/VC/vcpackages/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/"
@@ -2146,14 +2114,11 @@ events:
       - "C:/Program Files/CMake/bin/"
       - "C:/Program Files/CMake/sbin/"
       - "C:/Program Files/CMake/"
-      - "C:/Program Files (x86)/tictactoe/bin/"
-      - "C:/Program Files (x86)/tictactoe/sbin/"
-      - "C:/Program Files (x86)/tictactoe/"
+      - "C:/Program Files/tictactoe/bin/"
+      - "C:/Program Files/tictactoe/sbin/"
+      - "C:/Program Files/tictactoe/"
       - "/REGISTRY-NOTFOUND/"
     searched_directories:
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/purify.com"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/purify.exe"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/purify"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/purify.com"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/purify.exe"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/purify"
@@ -2319,21 +2284,18 @@ events:
       - "C:/Program Files/CMake/purify.com"
       - "C:/Program Files/CMake/purify.exe"
       - "C:/Program Files/CMake/purify"
-      - "C:/Program Files (x86)/tictactoe/bin/purify.com"
-      - "C:/Program Files (x86)/tictactoe/bin/purify.exe"
-      - "C:/Program Files (x86)/tictactoe/bin/purify"
-      - "C:/Program Files (x86)/tictactoe/sbin/purify.com"
-      - "C:/Program Files (x86)/tictactoe/sbin/purify.exe"
-      - "C:/Program Files (x86)/tictactoe/sbin/purify"
-      - "C:/Program Files (x86)/tictactoe/purify.com"
-      - "C:/Program Files (x86)/tictactoe/purify.exe"
-      - "C:/Program Files (x86)/tictactoe/purify"
+      - "C:/Program Files/tictactoe/bin/purify.com"
+      - "C:/Program Files/tictactoe/bin/purify.exe"
+      - "C:/Program Files/tictactoe/bin/purify"
+      - "C:/Program Files/tictactoe/sbin/purify.com"
+      - "C:/Program Files/tictactoe/sbin/purify.exe"
+      - "C:/Program Files/tictactoe/sbin/purify"
+      - "C:/Program Files/tictactoe/purify.com"
+      - "C:/Program Files/tictactoe/purify.exe"
+      - "C:/Program Files/tictactoe/purify"
       - "/REGISTRY-NOTFOUND/purify.com"
       - "/REGISTRY-NOTFOUND/purify.exe"
       - "/REGISTRY-NOTFOUND/purify"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/valgrind.com"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/valgrind.exe"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/valgrind"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/valgrind.com"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/valgrind.exe"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/valgrind"
@@ -2499,21 +2461,18 @@ events:
       - "C:/Program Files/CMake/valgrind.com"
       - "C:/Program Files/CMake/valgrind.exe"
       - "C:/Program Files/CMake/valgrind"
-      - "C:/Program Files (x86)/tictactoe/bin/valgrind.com"
-      - "C:/Program Files (x86)/tictactoe/bin/valgrind.exe"
-      - "C:/Program Files (x86)/tictactoe/bin/valgrind"
-      - "C:/Program Files (x86)/tictactoe/sbin/valgrind.com"
-      - "C:/Program Files (x86)/tictactoe/sbin/valgrind.exe"
-      - "C:/Program Files (x86)/tictactoe/sbin/valgrind"
-      - "C:/Program Files (x86)/tictactoe/valgrind.com"
-      - "C:/Program Files (x86)/tictactoe/valgrind.exe"
-      - "C:/Program Files (x86)/tictactoe/valgrind"
+      - "C:/Program Files/tictactoe/bin/valgrind.com"
+      - "C:/Program Files/tictactoe/bin/valgrind.exe"
+      - "C:/Program Files/tictactoe/bin/valgrind"
+      - "C:/Program Files/tictactoe/sbin/valgrind.com"
+      - "C:/Program Files/tictactoe/sbin/valgrind.exe"
+      - "C:/Program Files/tictactoe/sbin/valgrind"
+      - "C:/Program Files/tictactoe/valgrind.com"
+      - "C:/Program Files/tictactoe/valgrind.exe"
+      - "C:/Program Files/tictactoe/valgrind"
       - "/REGISTRY-NOTFOUND/valgrind.com"
       - "/REGISTRY-NOTFOUND/valgrind.exe"
       - "/REGISTRY-NOTFOUND/valgrind"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/boundscheck.com"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/boundscheck.exe"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/boundscheck"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/boundscheck.com"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/boundscheck.exe"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/boundscheck"
@@ -2679,21 +2638,18 @@ events:
       - "C:/Program Files/CMake/boundscheck.com"
       - "C:/Program Files/CMake/boundscheck.exe"
       - "C:/Program Files/CMake/boundscheck"
-      - "C:/Program Files (x86)/tictactoe/bin/boundscheck.com"
-      - "C:/Program Files (x86)/tictactoe/bin/boundscheck.exe"
-      - "C:/Program Files (x86)/tictactoe/bin/boundscheck"
-      - "C:/Program Files (x86)/tictactoe/sbin/boundscheck.com"
-      - "C:/Program Files (x86)/tictactoe/sbin/boundscheck.exe"
-      - "C:/Program Files (x86)/tictactoe/sbin/boundscheck"
-      - "C:/Program Files (x86)/tictactoe/boundscheck.com"
-      - "C:/Program Files (x86)/tictactoe/boundscheck.exe"
-      - "C:/Program Files (x86)/tictactoe/boundscheck"
+      - "C:/Program Files/tictactoe/bin/boundscheck.com"
+      - "C:/Program Files/tictactoe/bin/boundscheck.exe"
+      - "C:/Program Files/tictactoe/bin/boundscheck"
+      - "C:/Program Files/tictactoe/sbin/boundscheck.com"
+      - "C:/Program Files/tictactoe/sbin/boundscheck.exe"
+      - "C:/Program Files/tictactoe/sbin/boundscheck"
+      - "C:/Program Files/tictactoe/boundscheck.com"
+      - "C:/Program Files/tictactoe/boundscheck.exe"
+      - "C:/Program Files/tictactoe/boundscheck"
       - "/REGISTRY-NOTFOUND/boundscheck.com"
       - "/REGISTRY-NOTFOUND/boundscheck.exe"
       - "/REGISTRY-NOTFOUND/boundscheck"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/drmemory.com"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/drmemory.exe"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/drmemory"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/drmemory.com"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/drmemory.exe"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/drmemory"
@@ -2859,21 +2815,18 @@ events:
       - "C:/Program Files/CMake/drmemory.com"
       - "C:/Program Files/CMake/drmemory.exe"
       - "C:/Program Files/CMake/drmemory"
-      - "C:/Program Files (x86)/tictactoe/bin/drmemory.com"
-      - "C:/Program Files (x86)/tictactoe/bin/drmemory.exe"
-      - "C:/Program Files (x86)/tictactoe/bin/drmemory"
-      - "C:/Program Files (x86)/tictactoe/sbin/drmemory.com"
-      - "C:/Program Files (x86)/tictactoe/sbin/drmemory.exe"
-      - "C:/Program Files (x86)/tictactoe/sbin/drmemory"
-      - "C:/Program Files (x86)/tictactoe/drmemory.com"
-      - "C:/Program Files (x86)/tictactoe/drmemory.exe"
-      - "C:/Program Files (x86)/tictactoe/drmemory"
+      - "C:/Program Files/tictactoe/bin/drmemory.com"
+      - "C:/Program Files/tictactoe/bin/drmemory.exe"
+      - "C:/Program Files/tictactoe/bin/drmemory"
+      - "C:/Program Files/tictactoe/sbin/drmemory.com"
+      - "C:/Program Files/tictactoe/sbin/drmemory.exe"
+      - "C:/Program Files/tictactoe/sbin/drmemory"
+      - "C:/Program Files/tictactoe/drmemory.com"
+      - "C:/Program Files/tictactoe/drmemory.exe"
+      - "C:/Program Files/tictactoe/drmemory"
       - "/REGISTRY-NOTFOUND/drmemory.com"
       - "/REGISTRY-NOTFOUND/drmemory.exe"
       - "/REGISTRY-NOTFOUND/drmemory"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/cuda-memcheck.com"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/cuda-memcheck.exe"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/cuda-memcheck"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/cuda-memcheck.com"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/cuda-memcheck.exe"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/cuda-memcheck"
@@ -3039,21 +2992,18 @@ events:
       - "C:/Program Files/CMake/cuda-memcheck.com"
       - "C:/Program Files/CMake/cuda-memcheck.exe"
       - "C:/Program Files/CMake/cuda-memcheck"
-      - "C:/Program Files (x86)/tictactoe/bin/cuda-memcheck.com"
-      - "C:/Program Files (x86)/tictactoe/bin/cuda-memcheck.exe"
-      - "C:/Program Files (x86)/tictactoe/bin/cuda-memcheck"
-      - "C:/Program Files (x86)/tictactoe/sbin/cuda-memcheck.com"
-      - "C:/Program Files (x86)/tictactoe/sbin/cuda-memcheck.exe"
-      - "C:/Program Files (x86)/tictactoe/sbin/cuda-memcheck"
-      - "C:/Program Files (x86)/tictactoe/cuda-memcheck.com"
-      - "C:/Program Files (x86)/tictactoe/cuda-memcheck.exe"
-      - "C:/Program Files (x86)/tictactoe/cuda-memcheck"
+      - "C:/Program Files/tictactoe/bin/cuda-memcheck.com"
+      - "C:/Program Files/tictactoe/bin/cuda-memcheck.exe"
+      - "C:/Program Files/tictactoe/bin/cuda-memcheck"
+      - "C:/Program Files/tictactoe/sbin/cuda-memcheck.com"
+      - "C:/Program Files/tictactoe/sbin/cuda-memcheck.exe"
+      - "C:/Program Files/tictactoe/sbin/cuda-memcheck"
+      - "C:/Program Files/tictactoe/cuda-memcheck.com"
+      - "C:/Program Files/tictactoe/cuda-memcheck.exe"
+      - "C:/Program Files/tictactoe/cuda-memcheck"
       - "/REGISTRY-NOTFOUND/cuda-memcheck.com"
       - "/REGISTRY-NOTFOUND/cuda-memcheck.exe"
       - "/REGISTRY-NOTFOUND/cuda-memcheck"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/compute-sanitizer.com"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/compute-sanitizer.exe"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/compute-sanitizer"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/compute-sanitizer.com"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/compute-sanitizer.exe"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/compute-sanitizer"
@@ -3219,22 +3169,21 @@ events:
       - "C:/Program Files/CMake/compute-sanitizer.com"
       - "C:/Program Files/CMake/compute-sanitizer.exe"
       - "C:/Program Files/CMake/compute-sanitizer"
-      - "C:/Program Files (x86)/tictactoe/bin/compute-sanitizer.com"
-      - "C:/Program Files (x86)/tictactoe/bin/compute-sanitizer.exe"
-      - "C:/Program Files (x86)/tictactoe/bin/compute-sanitizer"
-      - "C:/Program Files (x86)/tictactoe/sbin/compute-sanitizer.com"
-      - "C:/Program Files (x86)/tictactoe/sbin/compute-sanitizer.exe"
-      - "C:/Program Files (x86)/tictactoe/sbin/compute-sanitizer"
-      - "C:/Program Files (x86)/tictactoe/compute-sanitizer.com"
-      - "C:/Program Files (x86)/tictactoe/compute-sanitizer.exe"
-      - "C:/Program Files (x86)/tictactoe/compute-sanitizer"
+      - "C:/Program Files/tictactoe/bin/compute-sanitizer.com"
+      - "C:/Program Files/tictactoe/bin/compute-sanitizer.exe"
+      - "C:/Program Files/tictactoe/bin/compute-sanitizer"
+      - "C:/Program Files/tictactoe/sbin/compute-sanitizer.com"
+      - "C:/Program Files/tictactoe/sbin/compute-sanitizer.exe"
+      - "C:/Program Files/tictactoe/sbin/compute-sanitizer"
+      - "C:/Program Files/tictactoe/compute-sanitizer.com"
+      - "C:/Program Files/tictactoe/compute-sanitizer.exe"
+      - "C:/Program Files/tictactoe/compute-sanitizer"
       - "/REGISTRY-NOTFOUND/compute-sanitizer.com"
       - "/REGISTRY-NOTFOUND/compute-sanitizer.exe"
       - "/REGISTRY-NOTFOUND/compute-sanitizer"
     found: false
     search_context:
       ENV{PATH}:
-        - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x86"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\VC\\VCPackages"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow"
@@ -3300,12 +3249,12 @@ events:
         - "C:\\Users\\ticky\\.deno\\bin"
         - "C:\\Users\\ticky\\.dotnet\\tools"
         - "C:\\Program Files\\CMake\\bin"
-      CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/tictactoe"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files/tictactoe"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "C:/Program Files"
         - "C:/Program Files (x86)"
         - "C:/Program Files/CMake"
-        - "C:/Program Files (x86)/tictactoe"
+        - "C:/Program Files/tictactoe"
   -
     kind: "find-v1"
     backtrace:
@@ -3325,7 +3274,6 @@ events:
     names:
       - "gcov"
     candidate_directories:
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/VC/vcpackages/"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/"
@@ -3381,13 +3329,10 @@ events:
       - "C:/Program Files/CMake/bin/"
       - "C:/Program Files/CMake/sbin/"
       - "C:/Program Files/CMake/"
-      - "C:/Program Files (x86)/tictactoe/bin/"
-      - "C:/Program Files (x86)/tictactoe/sbin/"
-      - "C:/Program Files (x86)/tictactoe/"
+      - "C:/Program Files/tictactoe/bin/"
+      - "C:/Program Files/tictactoe/sbin/"
+      - "C:/Program Files/tictactoe/"
     searched_directories:
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/gcov.com"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/gcov.exe"
-      - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/gcov"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/gcov.com"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/gcov.exe"
       - "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/gcov"
@@ -3553,19 +3498,18 @@ events:
       - "C:/Program Files/CMake/gcov.com"
       - "C:/Program Files/CMake/gcov.exe"
       - "C:/Program Files/CMake/gcov"
-      - "C:/Program Files (x86)/tictactoe/bin/gcov.com"
-      - "C:/Program Files (x86)/tictactoe/bin/gcov.exe"
-      - "C:/Program Files (x86)/tictactoe/bin/gcov"
-      - "C:/Program Files (x86)/tictactoe/sbin/gcov.com"
-      - "C:/Program Files (x86)/tictactoe/sbin/gcov.exe"
-      - "C:/Program Files (x86)/tictactoe/sbin/gcov"
-      - "C:/Program Files (x86)/tictactoe/gcov.com"
-      - "C:/Program Files (x86)/tictactoe/gcov.exe"
-      - "C:/Program Files (x86)/tictactoe/gcov"
+      - "C:/Program Files/tictactoe/bin/gcov.com"
+      - "C:/Program Files/tictactoe/bin/gcov.exe"
+      - "C:/Program Files/tictactoe/bin/gcov"
+      - "C:/Program Files/tictactoe/sbin/gcov.com"
+      - "C:/Program Files/tictactoe/sbin/gcov.exe"
+      - "C:/Program Files/tictactoe/sbin/gcov"
+      - "C:/Program Files/tictactoe/gcov.com"
+      - "C:/Program Files/tictactoe/gcov.exe"
+      - "C:/Program Files/tictactoe/gcov"
     found: false
     search_context:
       ENV{PATH}:
-        - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x86"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\VC\\VCPackages"
         - "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow"
@@ -3631,10 +3575,10 @@ events:
         - "C:\\Users\\ticky\\.deno\\bin"
         - "C:\\Users\\ticky\\.dotnet\\tools"
         - "C:\\Program Files\\CMake\\bin"
-      CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/tictactoe"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files/tictactoe"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "C:/Program Files"
         - "C:/Program Files (x86)"
         - "C:/Program Files/CMake"
-        - "C:/Program Files (x86)/tictactoe"
+        - "C:/Program Files/tictactoe"
 ...

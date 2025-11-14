@@ -3,7 +3,7 @@
 	BuildStamp="20251107-2146-Experimental"
 	Name="Leifs-PC"
 	Generator="ctest-4.1.2"
-	CompilerName="C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x86/cl.exe"
+	CompilerName="C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/cl.exe"
 	CompilerVersion="19.29.30154.0"
 	OSName="Windows"
 	Hostname="Leifs-PC"
@@ -25,11 +25,11 @@
 	ProcessorClockFrequency="3192"
 	>
 	<Testing>
-		<StartDateTime>Nov 07 14:03 Pacific Standard Time</StartDateTime>
-		<StartTestTime>1762552980</StartTestTime>
+		<StartDateTime>Nov 14 14:44 Pacific Standard Time</StartDateTime>
+		<StartTestTime>1763160270</StartTestTime>
 		<TestList/>
-		<EndDateTime>Nov 07 14:03 Pacific Standard Time</EndDateTime>
-		<EndTestTime>1762552980</EndTestTime>
+		<EndDateTime>Nov 14 14:44 Pacific Standard Time</EndDateTime>
+		<EndTestTime>1763160270</EndTestTime>
 		<ElapsedMinutes>0</ElapsedMinutes>
 	</Testing>
 </Site>

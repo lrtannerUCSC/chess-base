@@ -1,10 +1,19 @@
 #include "Chess.h"
+#include "Bitboard.h"
 #include <limits>
 #include <cmath>
 
 Chess::Chess()
 {
     _grid = new Grid(8, 8);
+    for (int i = 0; i<64; i++) {
+        _knightBitboards[i] = generateKnightMoveBitboard(i);
+    }
+    for (int i = 0; i<64; i++) {
+        _kingBitboards[i] = generateKingMoveBitboard(i);
+    }
+
+
 }
 
 Chess::~Chess()
@@ -16,7 +25,7 @@ char Chess::pieceNotation(int x, int y) const
 {
     const char *wpieces = { "0PNBRQK" };
     const char *bpieces = { "0pnbrqk" };
-    Bit *bit = _grid->getSquare(x, y)->bit();
+    Bit *bit = _grid->getSquare(x, y)->bit(); 
     char notation = '0';
     if (bit) {
         notation = bit->gameTag() < 128 ? wpieces[bit->gameTag()] : bpieces[bit->gameTag()-128];
@@ -65,72 +74,84 @@ void Chess::FENtoBoard(const std::string& fen) {
     for (char c : fen) {
         if (c == 'p') {
             Bit* piece = PieceForPlayer(1, Pawn);
+            piece->setGameTag(1 | 128);
             piece->setPosition(_grid->getSquare(i % 8, i / 8)->getPosition());
             _grid->getSquare(i % 8, i / 8)->setBit(piece);
             i++;
         }
         if (c == 'P') {
             Bit* piece = PieceForPlayer(0, Pawn);
+            piece->setGameTag(1);
             piece->setPosition(_grid->getSquare(i % 8, i / 8)->getPosition());
             _grid->getSquare(i % 8, i / 8)->setBit(piece);
             i++;
         }
         if (c == 'r') {
             Bit* piece = PieceForPlayer(1, Rook);
+            piece->setGameTag(2 | 128);
             piece->setPosition(_grid->getSquare(i % 8, i / 8)->getPosition());
             _grid->getSquare(i % 8, i / 8)->setBit(piece);
             i++;
         }
         if (c == 'R') {
             Bit* piece = PieceForPlayer(0, Rook);
+            piece->setGameTag(2);
             piece->setPosition(_grid->getSquare(i % 8, i / 8)->getPosition());
             _grid->getSquare(i % 8, i / 8)->setBit(piece);
             i++;
         }
         if (c == 'n') {
             Bit* piece = PieceForPlayer(1, Knight);
+            piece->setGameTag(3 | 128);
             piece->setPosition(_grid->getSquare(i % 8, i / 8)->getPosition());
             _grid->getSquare(i % 8, i / 8)->setBit(piece);
             i++;
         }
         if (c == 'N') {
             Bit* piece = PieceForPlayer(0, Knight);
+            piece->setGameTag(3);
             piece->setPosition(_grid->getSquare(i % 8, i / 8)->getPosition());
             _grid->getSquare(i % 8, i / 8)->setBit(piece);
             i++;
         }
         if (c == 'b') {
             Bit* piece = PieceForPlayer(1, Bishop);
+            piece->setGameTag(4 | 128);
             piece->setPosition(_grid->getSquare(i % 8, i / 8)->getPosition());
             _grid->getSquare(i % 8, i / 8)->setBit(piece);
             i++;
         }
         if (c == 'B') {
             Bit* piece = PieceForPlayer(0, Bishop);
+            piece->setGameTag(4);
             piece->setPosition(_grid->getSquare(i % 8, i / 8)->getPosition());
             _grid->getSquare(i % 8, i / 8)->setBit(piece);
             i++;
         }
         if (c == 'q') {
             Bit* piece = PieceForPlayer(1, Queen);
+            piece->setGameTag(5 | 128);
             piece->setPosition(_grid->getSquare(i % 8, i / 8)->getPosition());
             _grid->getSquare(i % 8, i / 8)->setBit(piece);
             i++;
         }
         if (c == 'Q') {
             Bit* piece = PieceForPlayer(0, Queen);
+            piece->setGameTag(5);
             piece->setPosition(_grid->getSquare(i % 8, i / 8)->getPosition());
             _grid->getSquare(i % 8, i / 8)->setBit(piece);
             i++;
         }
         if (c == 'k') {
             Bit* piece = PieceForPlayer(1, King);
+            piece->setGameTag(6 | 128);
             piece->setPosition(_grid->getSquare(i % 8, i / 8)->getPosition());
             _grid->getSquare(i % 8, i / 8)->setBit(piece);
             i++;
         }
         if (c == 'K') {
             Bit* piece = PieceForPlayer(0, King);
+            piece->setGameTag(6);
             piece->setPosition(_grid->getSquare(i % 8, i / 8)->getPosition());
             _grid->getSquare(i % 8, i / 8)->setBit(piece);
             i++;
@@ -140,7 +161,7 @@ void Chess::FENtoBoard(const std::string& fen) {
             continue;
         }
         if (std::isdigit(c) && c != '0') {
-            std::cout << c << std::endl;
+            // std::cout << c << std::endl;
             i += c - '0';
         }
     }
@@ -162,7 +183,52 @@ bool Chess::canBitMoveFrom(Bit &bit, BitHolder &src)
 
 bool Chess::canBitMoveFromTo(Bit &bit, BitHolder &src, BitHolder &dst)
 {
-    return true;
+    // Get the source and destination squares
+    ChessSquare* srcSquare = dynamic_cast<ChessSquare*>(&src);
+    ChessSquare* dstSquare = dynamic_cast<ChessSquare*>(&dst);
+    
+    if (!srcSquare || !dstSquare) {
+        return false;
+    }
+    
+    // Get coordinates
+    int srcX = srcSquare->getColumn();
+    int srcY = srcSquare->getRow();
+    int dstX = dstSquare->getColumn();
+    int dstY = dstSquare->getRow();
+    
+    // Get piece type from gameTag
+    int gameTag = bit.gameTag();
+    int pieceType = gameTag & 0x7F; // Mask out color bit to get piece type (1-6)
+    bool isWhite = (gameTag & 0x80) == 0; // Check if white piece
+    
+    // Convert coordinates to bitboard indices (0-63)
+    int srcIndex = srcY * 8 + srcX;
+    int dstIndex = dstY * 8 + dstX;
+    
+    // Check movement based on piece type
+    switch (pieceType) {
+        case 1: // Pawn
+            return true;
+            
+        case 2: // Rook
+            return true;
+            
+        case 3: // Knight
+            return (_knightBitboards[srcIndex] & (1ULL << dstIndex)) != 0;
+            
+        case 4: // bishop
+            return true;
+            
+        case 5: // Queen
+            return true;
+            
+        case 6: // King
+            return (_kingBitboards[srcIndex] & (1ULL << dstIndex)) != 0;
+            
+        default:
+            return false;
+    }
 }
 
 void Chess::stopGame()
@@ -221,4 +287,44 @@ void Chess::setStateString(const std::string &s)
             square->setBit(nullptr);
         }
     });
+}
+
+BitBoard Chess::generateKnightMoveBitboard(int square) {
+    BitBoard bitboard = 0ULL;
+    int rank = square / 8;
+    int file = square % 8;
+
+    std::pair<int, int> knightOffsets[] = {
+        {2, 1}, {2, -1}, {1, 2}, {1, -2}, {-1, 2}, {-1, -2}, {-2, 1}, {-2, -1}
+    };
+
+    constexpr uint64_t oneBit = 1;
+    for (auto [dr, df] : knightOffsets) {
+        int r = rank + dr;
+        int f = file + df;
+        if (r >= 0 && r < 8 && f >= 0 && f < 8) {
+            bitboard |= oneBit << (r * 8 + f);
+        }
+    }
+    return bitboard;
+}
+
+BitBoard Chess::generateKingMoveBitboard(int square) {
+    BitBoard bitboard = 0ULL;
+    int rank = square / 8;
+    int file = square % 8;
+
+    std::pair<int, int> knightOffsets[] = {
+        {1, 0}, {-1, 0}, {0, 1}, {0, -1}, {1, 1}, {1, -1}, {-1, 1}, {-1, -1}
+    };
+
+    constexpr uint64_t oneBit = 1;
+    for (auto [dr, df] : knightOffsets) {
+        int r = rank + dr;
+        int f = file + df;
+        if (r >= 0 && r < 8 && f >= 0 && f < 8) {
+            bitboard |= oneBit << (r * 8 + f);
+        }
+    }
+    return bitboard;
 }

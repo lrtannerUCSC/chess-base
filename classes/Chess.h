@@ -4,6 +4,8 @@
 #include "Grid.h"
 
 constexpr int pieceSize = 80;
+typedef uint64_t BitBoard;
+constexpr BitBoard BitZero = 1ULL;
 
 enum ChessPiece
 {
@@ -44,6 +46,10 @@ private:
     Player* ownerAt(int x, int y) const;
     void FENtoBoard(const std::string& fen);
     char pieceNotation(int x, int y) const;
-
+    BitBoard generateKnightMoveBitboard(int square);
+    BitBoard generateKingMoveBitboard(int square);
     Grid* _grid;
+    BitBoard _knightBitboards[64];
+    BitBoard _kingBitboards[64];
+
 };
