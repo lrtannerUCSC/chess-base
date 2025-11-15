@@ -3,15 +3,27 @@
 #include <limits>
 #include <cmath>
 
+const BitboardElement NotAFile(0xFEFEFEFEFEFEFEFEULL);
+const BitboardElement NotHFile(0x7F7F7F7F7F7F7F7FULL);
+const BitboardElement rank3(0x0000000000FF0000ULL);
+const BitboardElement rank6(0x0000FF0000000000ULL);
 Chess::Chess()
 {
     _grid = new Grid(8, 8);
-    for (int i = 0; i<64; i++) {
+    for (int i = 0; i < 64; i++) {
         _knightBitboards[i] = generateKnightMoveBitboard(i);
-    }
-    for (int i = 0; i<64; i++) {
         _kingBitboards[i] = generateKingMoveBitboard(i);
+        
+        _pawnSingleMoves[0][i] = generatePawnSingleMoves(i, true);
+        _pawnSingleMoves[1][i] = generatePawnSingleMoves(i, false);
+        
+        _pawnDoubleMoves[0][i] = generatePawnDoubleMoves(i, true);
+        _pawnDoubleMoves[1][i] = generatePawnDoubleMoves(i, false);
+        
+        _pawnCaptures[0][i] = generatePawnCaptures(i, true);
+        _pawnCaptures[1][i] = generatePawnCaptures(i, false);
     }
+    
 
 
 }
@@ -161,7 +173,6 @@ void Chess::FENtoBoard(const std::string& fen) {
             continue;
         }
         if (std::isdigit(c) && c != '0') {
-            // std::cout << c << std::endl;
             i += c - '0';
         }
     }
@@ -199,17 +210,46 @@ bool Chess::canBitMoveFromTo(Bit &bit, BitHolder &src, BitHolder &dst)
     
     // Get piece type from gameTag
     int gameTag = bit.gameTag();
-    int pieceType = gameTag & 0x7F; // Mask out color bit to get piece type (1-6)
-    bool isWhite = (gameTag & 0x80) == 0; // Check if white piece
+    int pieceType = gameTag & 0x7F;
+    bool isWhite = (gameTag & 0x80) == 0;
+    int colorIndex = isWhite ? 0 : 1;
     
     // Convert coordinates to bitboard indices (0-63)
     int srcIndex = srcY * 8 + srcX;
     int dstIndex = dstY * 8 + dstX;
     
+    ChessSquare* intermediateSquare;
+    int intermediateRank;
+    bool isCapture;
+    bool singleMove;
+    bool doubleMove;
     // Check movement based on piece type
     switch (pieceType) {
         case 1: // Pawn
-            return true;
+            dstSquare = _grid->getSquare(dstX, dstY);
+            isCapture = (dstSquare->bit() != nullptr) && 
+                           (dstSquare->bit()->getOwner() != bit.getOwner());
+            
+            if (isCapture) {
+                return (_pawnCaptures[colorIndex][srcIndex] & (1ULL << dstIndex)) != 0;
+            } else {
+                singleMove = (_pawnSingleMoves[colorIndex][srcIndex] & (1ULL << dstIndex)) != 0;
+                doubleMove = (_pawnDoubleMoves[colorIndex][srcIndex] & (1ULL << dstIndex)) != 0;
+                
+                if (doubleMove) {
+                    intermediateRank = isWhite ? srcY - 1 : srcY + 1;
+                    intermediateSquare = _grid->getSquare(srcX, intermediateRank);
+                    if (intermediateSquare->bit() != nullptr) {
+                        return false; // Path is blocked
+                    }
+                }
+                
+                if (dstSquare->bit() != nullptr) {
+                    return false;
+                }
+                
+                return singleMove || doubleMove;
+            }
             
         case 2: // Rook
             return true;
@@ -326,5 +366,69 @@ BitBoard Chess::generateKingMoveBitboard(int square) {
             bitboard |= oneBit << (r * 8 + f);
         }
     }
+    return bitboard;
+}
+
+BitBoard Chess::generatePawnSingleMoves(int square, bool isWhite) {
+    BitBoard bitboard = 0ULL;
+    int rank = square / 8;
+    int file = square % 8;
+    
+    if (isWhite) {
+        if (rank < 7) {
+            bitboard |= 1ULL << ((rank - 1) * 8 + file);
+        }
+    } else {
+        if (rank > 0) {
+            bitboard |= 1ULL << ((rank + 1) * 8 + file);
+        }
+    }
+    
+    return bitboard;
+}
+
+BitBoard Chess::generatePawnDoubleMoves(int square, bool isWhite) {
+    BitBoard bitboard = 0ULL;
+    int rank = square / 8;
+    int file = square % 8;
+    
+    if (isWhite) {
+        if (rank == 6) {
+            bitboard |= 1ULL << ((rank - 2) * 8 + file);
+        }
+    } else {
+        if (rank == 1) {
+            bitboard |= 1ULL << ((rank + 2) * 8 + file);
+        }
+    }
+    
+    return bitboard;
+}
+
+BitBoard Chess::generatePawnCaptures(int square, bool isWhite) {
+    BitBoard bitboard = 0ULL;
+    int rank = square / 8;
+    int file = square % 8;
+    
+    if (isWhite) {
+        if (rank < 7) {
+            if (file > 0) { // capture left
+                bitboard |= 1ULL << ((rank - 1) * 8 + (file + 1));
+            }
+            if (file < 7) { // capture right
+                bitboard |= 1ULL << ((rank - 1) * 8 + (file - 1));
+            }
+        }
+    } else {
+        if (rank > 0) {
+            if (file > 0) { // capture left
+                bitboard |= 1ULL << ((rank + 1) * 8 + (file + 1));
+            }
+            if (file < 7) { // capture right
+                bitboard |= 1ULL << ((rank + 1) * 8 + (file - 1));
+            }
+        }
+    }
+    
     return bitboard;
 }

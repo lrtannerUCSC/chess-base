@@ -48,8 +48,13 @@ private:
     char pieceNotation(int x, int y) const;
     BitBoard generateKnightMoveBitboard(int square);
     BitBoard generateKingMoveBitboard(int square);
+    BitBoard generatePawnCaptures(int square, bool isWhite);
+    BitBoard generatePawnSingleMoves(int square, bool isWhite);
+    BitBoard generatePawnDoubleMoves(int square, bool isWhite);
     Grid* _grid;
     BitBoard _knightBitboards[64];
     BitBoard _kingBitboards[64];
-
+    BitBoard _pawnSingleMoves[2][64];
+    BitBoard _pawnDoubleMoves[2][64];
+    BitBoard _pawnCaptures[2][64];
 };
