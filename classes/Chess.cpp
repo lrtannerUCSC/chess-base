@@ -22,6 +22,10 @@ Chess::Chess()
         
         _pawnCaptures[0][i] = generatePawnCaptures(i, true);
         _pawnCaptures[1][i] = generatePawnCaptures(i, false);
+
+        _rookBitboards[i] = generateRookMoveBitboard(i);
+        _bishopBitboards[i] = generateBishopMoveBitboard(i);
+        _queenBitboards[i] = generateQueenMoveBitboard(i);
     }
     
 
@@ -223,6 +227,7 @@ bool Chess::canBitMoveFromTo(Bit &bit, BitHolder &src, BitHolder &dst)
     bool isCapture;
     bool singleMove;
     bool doubleMove;
+    
     // Check movement based on piece type
     switch (pieceType) {
         case 1: // Pawn
@@ -252,16 +257,16 @@ bool Chess::canBitMoveFromTo(Bit &bit, BitHolder &src, BitHolder &dst)
             }
             
         case 2: // Rook
-            return true;
+            return isValidRookMove(srcX, srcY, dstX, dstY);
             
         case 3: // Knight
             return (_knightBitboards[srcIndex] & (1ULL << dstIndex)) != 0;
             
-        case 4: // bishop
-            return true;
+        case 4: // Bishop
+            return isValidBishopMove(srcX, srcY, dstX, dstY);
             
         case 5: // Queen
-            return true;
+            return isValidQueenMove(srcX, srcY, dstX, dstY);
             
         case 6: // King
             return (_kingBitboards[srcIndex] & (1ULL << dstIndex)) != 0;
@@ -269,6 +274,66 @@ bool Chess::canBitMoveFromTo(Bit &bit, BitHolder &src, BitHolder &dst)
         default:
             return false;
     }
+}
+
+bool Chess::isValidRookMove(int srcX, int srcY, int dstX, int dstY) {
+    // Check if it's a valid rook direction (straight line)
+    if (srcX != dstX && srcY != dstY) {
+        return false;
+    }
+    
+    // Determine direction
+    int dx = (dstX > srcX) ? 1 : (dstX < srcX) ? -1 : 0;
+    int dy = (dstY > srcY) ? 1 : (dstY < srcY) ? -1 : 0;
+    
+    // Check each square along the path
+    int x = srcX + dx;
+    int y = srcY + dy;
+    
+    while (x != dstX || y != dstY) {
+        ChessSquare* square = _grid->getSquare(x, y);
+        if (square->bit() != nullptr) {
+            return false; // Path is blocked
+        }
+        x += dx;
+        y += dy;
+    }
+    
+    return true;
+}
+
+bool Chess::isValidBishopMove(int srcX, int srcY, int dstX, int dstY) {
+    // Check if it's a valid bishop direction (diagonal)
+    int deltaX = std::abs(dstX - srcX);
+    int deltaY = std::abs(dstY - srcY);
+    if (deltaX != deltaY) {
+        return false;
+    }
+    
+    // Determine direction
+    int dx = (dstX > srcX) ? 1 : -1;
+    int dy = (dstY > srcY) ? 1 : -1;
+    
+    // Check each square along the path
+    int x = srcX + dx;
+    int y = srcY + dy;
+    
+    while (x != dstX && y != dstY) {
+        ChessSquare* square = _grid->getSquare(x, y);
+        if (square->bit() != nullptr) {
+            return false; // Path is blocked
+        }
+        x += dx;
+        y += dy;
+    }
+    
+    return true;
+}
+
+bool Chess::isValidQueenMove(int srcX, int srcY, int dstX, int dstY) {
+    // Queen moves are either rook moves or bishop moves
+    return isValidRookMove(srcX, srcY, dstX, dstY) || 
+           isValidBishopMove(srcX, srcY, dstX, dstY);
 }
 
 void Chess::stopGame()
@@ -431,4 +496,55 @@ BitBoard Chess::generatePawnCaptures(int square, bool isWhite) {
     }
     
     return bitboard;
+}
+
+BitBoard Chess::generateRookMoveBitboard(int square) {
+    BitBoard bitboard = 0ULL;
+    int rank = square / 8;
+    int file = square % 8;
+    
+    // Directions: up, down, left, right
+    std::pair<int, int> directions[] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+    
+    for (auto [dr, df] : directions) {
+        int r = rank + dr;
+        int f = file + df;
+        
+        // Move in this direction until we hit the board edge
+        while (r >= 0 && r < 8 && f >= 0 && f < 8) {
+            bitboard |= 1ULL << (r * 8 + f);
+            r += dr;
+            f += df;
+        }
+    }
+    
+    return bitboard;
+}
+
+BitBoard Chess::generateBishopMoveBitboard(int square) {
+    BitBoard bitboard = 0ULL;
+    int rank = square / 8;
+    int file = square % 8;
+    
+    // Directions: up-right, up-left, down-right, down-left
+    std::pair<int, int> directions[] = {{1, 1}, {1, -1}, {-1, 1}, {-1, -1}};
+    
+    for (auto [dr, df] : directions) {
+        int r = rank + dr;
+        int f = file + df;
+        
+        // Move in this direction until we hit the board edge
+        while (r >= 0 && r < 8 && f >= 0 && f < 8) {
+            bitboard |= 1ULL << (r * 8 + f);
+            r += dr;
+            f += df;
+        }
+    }
+    
+    return bitboard;
+}
+
+BitBoard Chess::generateQueenMoveBitboard(int square) {
+    // Queen moves are just rook moves OR bishop moves
+    return generateRookMoveBitboard(square) | generateBishopMoveBitboard(square);
 }

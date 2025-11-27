@@ -4,8 +4,8 @@
 
 
 # Configuration directories and files
-SourceDirectory: C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base
-BuildDirectory: C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base/build
+SourceDirectory: D:/UCSC Assignments/cmpm123/chess-base
+BuildDirectory: D:/UCSC Assignments/cmpm123/chess-base/build
 
 # Where to place the cost data store
 CostDataFile: 
@@ -27,7 +27,7 @@ SubmitInactivityTimeout:
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "C:/Program Files/CMake/bin/cmake.exe" "C:/Users/ticky/Desktop/UCSC Assignments/cmpm123/chess-base"
+ConfigureCommand: "C:/Program Files/CMake/bin/cmake.exe" "D:/UCSC Assignments/cmpm123/chess-base"
 MakeCommand: "C:\Program Files\CMake\bin\cmake.exe" --build . --config "${CTEST_CONFIGURATION_TYPE}"
 DefaultCTestConfigurationType: Release
 
