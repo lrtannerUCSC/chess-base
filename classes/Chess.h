@@ -2,21 +2,22 @@
 
 #include "Game.h"
 #include "Grid.h"
+#include "ChessPiece.h"
+#include "Bitboard.h"
+#include "GameState.h"
 
 constexpr int pieceSize = 80;
-typedef uint64_t BitBoard;
-constexpr BitBoard BitZero = 1ULL;
 
-enum ChessPiece
-{
-    NoPiece,
-    Pawn,
-    Knight,
-    Bishop,
-    Rook,
-    Queen,
-    King
-};
+// enum ChessPiece
+// {
+//     NoPiece,
+//     Pawn,
+//     Knight,
+//     Bishop,
+//     Rook,
+//     Queen,
+//     King
+// };
 
 class Chess : public Game
 {
@@ -46,6 +47,8 @@ private:
     Player* ownerAt(int x, int y) const;
     void FENtoBoard(const std::string& fen);
     char pieceNotation(int x, int y) const;
+    std::vector<BitMove> _moves;  // Store current legal moves
+    void bitMovedFromTo(Bit &bit, BitHolder &src, BitHolder &dst) override;
     BitBoard generateKnightMoveBitboard(int square);
     BitBoard generateKingMoveBitboard(int square);
     BitBoard generatePawnCaptures(int square, bool isWhite);
@@ -66,4 +69,10 @@ private:
     BitBoard _rookBitboards[64];
     BitBoard _bishopBitboards[64];
     BitBoard _queenBitboards[64];
+    void updateAI();
+    int negamax(std::string& state, int depth, int alpha, int beta, int playerColor);
+    int evaluateBoard(const std::string& state);
+    int _countMoves;
+    int posInfinite = 10000;
+    int negInfinite = -10000;
 };

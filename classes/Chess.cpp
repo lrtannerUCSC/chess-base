@@ -1,12 +1,21 @@
 #include "Chess.h"
 #include "Bitboard.h"
+#include "GameState.h"
 #include <limits>
 #include <cmath>
+#include <vector>
+#include <map>
 
-const BitboardElement NotAFile(0xFEFEFEFEFEFEFEFEULL);
-const BitboardElement NotHFile(0x7F7F7F7F7F7F7F7FULL);
-const BitboardElement rank3(0x0000000000FF0000ULL);
-const BitboardElement rank6(0x0000FF0000000000ULL);
+static std::map<char, int> evaluateScores = {
+    {'P', 100}, {'p', -100},    // Pawns
+    {'N', 200}, {'n', -200},    // Knights
+    {'B', 230}, {'b', -230},    // Bishops
+    {'R', 400}, {'r', -400},    // Rooks
+    {'Q', 900}, {'q', -900},    // Queens
+    {'K', 2000}, {'k', -2000},  // Kings
+    {'0', 0}                     // Empty squares
+};
+
 Chess::Chess()
 {
     _grid = new Grid(8, 8);
@@ -39,8 +48,8 @@ Chess::~Chess()
 
 char Chess::pieceNotation(int x, int y) const
 {
-    const char *wpieces = { "0PNBRQK" };
-    const char *bpieces = { "0pnbrqk" };
+    const char *wpieces = { "0PRNBQK" };
+    const char *bpieces = { "0prnbqk" };
     Bit *bit = _grid->getSquare(x, y)->bit(); 
     char notation = '0';
     if (bit) {
@@ -51,7 +60,7 @@ char Chess::pieceNotation(int x, int y) const
 
 Bit* Chess::PieceForPlayer(const int playerNumber, ChessPiece piece)
 {
-    const char* pieces[] = { "pawn.png", "knight.png", "bishop.png", "rook.png", "queen.png", "king.png" };
+    const char* pieces[] = { "pawn.png", "rook.png", "knight.png", "bishop.png", "queen.png", "king.png" };
 
     Bit* bit = new Bit();
     // should possibly be cached from player class?
@@ -70,6 +79,7 @@ void Chess::setUpBoard()
     _gameOptions.rowX = 8;
     _gameOptions.rowY = 8;
 
+    setAIPlayer(1);
     _grid->initializeChessSquares(pieceSize, "boardsquare.png");
     FENtoBoard("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
 
@@ -212,67 +222,125 @@ bool Chess::canBitMoveFromTo(Bit &bit, BitHolder &src, BitHolder &dst)
     int dstX = dstSquare->getColumn();
     int dstY = dstSquare->getRow();
     
-    // Get piece type from gameTag
-    int gameTag = bit.gameTag();
-    int pieceType = gameTag & 0x7F;
-    bool isWhite = (gameTag & 0x80) == 0;
-    int colorIndex = isWhite ? 0 : 1;
-    
     // Convert coordinates to bitboard indices (0-63)
     int srcIndex = srcY * 8 + srcX;
     int dstIndex = dstY * 8 + dstX;
     
-    ChessSquare* intermediateSquare;
-    int intermediateRank;
-    bool isCapture;
-    bool singleMove;
-    bool doubleMove;
+    // Get piece type from gameTag
+    int gameTag = bit.gameTag();
+    int pieceType = gameTag & 0x7F;
     
-    // Check movement based on piece type
-    switch (pieceType) {
-        case 1: // Pawn
-            dstSquare = _grid->getSquare(dstX, dstY);
-            isCapture = (dstSquare->bit() != nullptr) && 
-                           (dstSquare->bit()->getOwner() != bit.getOwner());
-            
-            if (isCapture) {
-                return (_pawnCaptures[colorIndex][srcIndex] & (1ULL << dstIndex)) != 0;
-            } else {
-                singleMove = (_pawnSingleMoves[colorIndex][srcIndex] & (1ULL << dstIndex)) != 0;
-                doubleMove = (_pawnDoubleMoves[colorIndex][srcIndex] & (1ULL << dstIndex)) != 0;
+    // First, check if it's the current player's turn
+    if (!canBitMoveFrom(bit, src)) {
+        return false;
+    }
+    
+    // Check if destination has a friendly piece
+    if (dstSquare->bit() && dstSquare->bit()->getOwner() == bit.getOwner()) {
+        return false; // Can't capture your own piece
+    }
+    
+    // Get current board state
+    std::string currentState = stateString();
+    
+    // Create GameState object with current position
+    GameState gameState;
+    char currentPlayer = (getCurrentPlayer()->playerNumber() == 0) ? WHITE : BLACK;
+    gameState.init(currentState.c_str(), currentPlayer);
+    
+    // Generate all legal moves for current position
+    auto legalMoves = gameState.generateAllMoves();
+    
+    // Check if the requested move is in the list of legal moves
+    for (const auto& move : legalMoves) {
+        if (move.from == srcIndex && move.to == dstIndex) {
+            // We found a legal move from src to dst
+            return true;
+        }
+    }
+    
+    return false;
+}
+
+void Chess::bitMovedFromTo(Bit& bit, BitHolder& src, BitHolder& dst) {
+    // Clear any cached moves
+    // _cachedMoves.clear();
+    
+    // Handle piece capture
+    ChessSquare* dstSquare = dynamic_cast<ChessSquare*>(&dst);
+    if (dstSquare && dstSquare->bit() && dstSquare->bit()->getOwner() != bit.getOwner()) {
+        // Capture the piece
+        std::cout << "Capture!" << std::endl;
+        delete dstSquare->bit();
+        dstSquare->setBit(nullptr);
+    }
+    
+    // Update the bit's position
+    bit.setPosition(dst.getPosition());
+    
+    // Switch to the next player (Game::bitMovedFromTo calls endTurn, but we need to handle AI)
+    Player* current = getCurrentPlayer();
+    
+    // Call parent class to handle turn ending
+    Game::bitMovedFromTo(bit, src, dst);
+    
+    // Check for pawn promotion
+    int gameTag = bit.gameTag();
+    int pieceType = gameTag & 0x7F;
+    bool isWhite = (gameTag & 0x80) == 0;
+    
+    if (pieceType == Pawn) {
+        ChessSquare* square = dynamic_cast<ChessSquare*>(&dst);
+        if (square) {
+            int row = square->getRow();
+            // Check if pawn reached the last rank
+            if ((isWhite && row == 0) || (!isWhite && row == 7)) {
+                // Pawn promotion - promote to queen
+                bit.setGameTag(isWhite ? Queen : (Queen | 128));
                 
-                if (doubleMove) {
-                    intermediateRank = isWhite ? srcY - 1 : srcY + 1;
-                    intermediateSquare = _grid->getSquare(srcX, intermediateRank);
-                    if (intermediateSquare->bit() != nullptr) {
-                        return false; // Path is blocked
-                    }
-                }
-                
-                if (dstSquare->bit() != nullptr) {
-                    return false;
-                }
-                
-                return singleMove || doubleMove;
+                // Update the sprite
+                const char* pieceName = "queen.png";
+                std::string spritePath = std::string("") + (isWhite ? "w_" : "b_") + pieceName;
+                bit.LoadTextureFromFile(spritePath.c_str());
+                std::cout << "Pawn promoted to Queen!" << std::endl;
             }
-            
-        case 2: // Rook
-            return isValidRookMove(srcX, srcY, dstX, dstY);
-            
-        case 3: // Knight
-            return (_knightBitboards[srcIndex] & (1ULL << dstIndex)) != 0;
-            
-        case 4: // Bishop
-            return isValidBishopMove(srcX, srcY, dstX, dstY);
-            
-        case 5: // Queen
-            return isValidQueenMove(srcX, srcY, dstX, dstY);
-            
-        case 6: // King
-            return (_kingBitboards[srcIndex] & (1ULL << dstIndex)) != 0;
-            
-        default:
-            return false;
+        }
+    }
+    
+    // Debug output
+    ChessSquare* srcSquare = dynamic_cast<ChessSquare*>(&src);
+    if (srcSquare && dstSquare) {
+        char srcFile = 'a' + srcSquare->getColumn();
+        char dstFile = 'a' + dstSquare->getColumn();
+        int srcRank = srcSquare->getRow() + 1;
+        int dstRank = dstSquare->getRow() + 1;
+        
+        // std::cout << "Move made: " << srcFile << srcRank << " to " 
+        //           << dstFile << dstRank << std::endl;
+    }
+    
+    // Now trigger AI move if it's AI's turn
+    // Assuming AI is Player 1 (Black)
+    if (getCurrentPlayer()->playerNumber() == 1) {
+        // std::cout << "\nAI's turn (Black)..." << std::endl;
+        
+        
+        // Generate current legal moves for AI
+        GameState gameState;
+        std::string currentState = stateString();
+        gameState.init(currentState.c_str(), BLACK); // AI is black
+        
+        _moves = gameState.generateAllMoves();
+        
+        if (_moves.empty()) {
+            std::cout << "AI has no legal moves!" << std::endl;
+            return;
+        }
+        
+        // std::cout << "AI evaluating " << _moves.size() << " moves..." << std::endl;
+        
+        // Call updateAI to make the AI move
+        updateAI();
     }
 }
 
@@ -547,4 +615,156 @@ BitBoard Chess::generateBishopMoveBitboard(int square) {
 BitBoard Chess::generateQueenMoveBitboard(int square) {
     // Queen moves are just rook moves OR bishop moves
     return generateRookMoveBitboard(square) | generateBishopMoveBitboard(square);
+}
+
+int Chess::negamax(std::string& state, int depth, int alpha, int beta, int playerColor)
+{
+    _countMoves++;
+
+    // Base case: at leaf nodes, evaluate the position
+    if (depth == 0) {
+        return evaluateBoard(state) * playerColor;
+    }
+
+    // Create a GameState object with the current state
+    GameState gameState;
+    char colorChar = (playerColor == WHITE) ? WHITE : BLACK;  // WHITE = 1, BLACK = -1
+    gameState.init(state.c_str(), colorChar);
+    
+    // Generate moves using the GameState object
+    auto newMoves = gameState.generateAllMoves();  // Use GameState directly
+
+    if (newMoves.empty()) {
+        // Checkmate or stalemate
+        return evaluateBoard(state) * playerColor;
+    }
+
+    int bestVal = negInfinite;
+
+    for(auto& move : newMoves) {
+        // Save the board state
+        char boardSave = state[move.to];
+        char pieceMoving = state[move.from];
+
+        // Make the move
+        state[move.to] = pieceMoving;
+        state[move.from] = '0';
+
+        // Recursively evaluate
+        bestVal = std::max(bestVal, -negamax(state, depth - 1, -beta, -alpha, -playerColor));
+
+        // Undo the move
+        state[move.from] = pieceMoving;
+        state[move.to] = boardSave;
+
+        // Alpha-beta pruning
+        alpha = std::max(alpha, bestVal);
+        if (alpha >= beta) {
+            break;
+        }
+    }
+
+    return bestVal;
+}
+
+
+void Chess::updateAI()
+{
+    int bestVal = negInfinite;
+    BitMove bestMove;
+    std::string state = stateString();
+    _countMoves = 0;
+
+    // Generate current legal moves for AI (should be Black's turn)
+    GameState gameState;
+    gameState.init(state.c_str(), BLACK);  // AI is Black
+    
+    // Get fresh moves
+    _moves = gameState.generateAllMoves();
+    
+    if (_moves.empty()) {
+        std::cout << "AI has no legal moves!" << std::endl;
+        return;
+    }
+
+    // std::cout << "AI searching through " << _moves.size() << " moves..." << std::endl;
+
+    // Search through current legal moves
+    for(auto& move : _moves) {
+        // Save the board state
+        char boardSave = state[move.to];
+        char pieceMoving = state[move.from];
+
+        // Make the move on our state copy
+        state[move.to] = pieceMoving;
+        state[move.from] = '0';
+
+        // Call negamax to evaluate this move
+        // AI is Black, so playerColor = BLACK = -1
+        // After AI moves, it's White's turn
+        int moveVal = -negamax(state, 4, negInfinite, posInfinite, WHITE);
+
+        // Undo the move
+        state[move.from] = pieceMoving;
+        state[move.to] = boardSave;
+
+        // Track the best move found
+        if (moveVal > bestVal) {
+            bestMove = move;
+            bestVal = moveVal;
+            // std::cout << "New best move: value = " << bestVal << std::endl;
+        }
+    }
+
+    // Execute the best move on the actual board
+    if(bestVal != negInfinite) {
+        // std::cout << "AI choosing move after checking " << _countMoves << " positions" << std::endl;
+        int srcSquare = bestMove.from;
+        int dstSquare = bestMove.to;
+        
+        int srcX = srcSquare % 8;
+        int srcY = srcSquare / 8;
+        int dstX = dstSquare % 8;
+        int dstY = dstSquare / 8;
+        
+        // std::cout << "AI move: " << char('a' + srcX) << (srcY + 1) 
+        //           << " to " << char('a' + dstX) << (dstY + 1) << std::endl;
+        
+        // Get the source and destination holders
+        BitHolder& src = getHolderAt(srcX, srcY);
+        BitHolder& dst = getHolderAt(dstX, dstY);
+        
+        // Get the piece to move
+        Bit* bit = src.bit();
+        
+        if (bit) {
+            // IMPORTANT: Use the game system to make the move properly
+            // This ensures turn switching happens correctly
+            
+            // First, check if the move is legal
+            if (dst.canDropBitAtPoint(bit, ImVec2(0, 0)) && 
+                canBitMoveFromTo(*bit, src, dst)) {
+                
+                // Move the piece through the game system
+                dst.dropBitAtPoint(bit, ImVec2(0, 0));
+                src.setBit(nullptr);
+                
+                // CRITICAL: Call the parent's bitMovedFromTo to switch turns
+                Game::bitMovedFromTo(*bit, src, dst);
+                
+                // std::cout << "AI move completed. Turn should now be White's." << std::endl;
+            } else {
+                std::cout << "ERROR: AI tried illegal move!" << std::endl;
+            }
+        }
+    } else {
+        std::cout << "AI couldn't find a valid move!" << std::endl;
+    }
+}
+int Chess::evaluateBoard(const std::string& state) {
+    int value = 0;
+    for(char ch : state) {
+        value += evaluateScores[ch];
+    }
+    return value;
 }
