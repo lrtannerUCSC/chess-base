@@ -1,13 +1,54 @@
-Fork or clone your this chess project into a new GitHub repository.
+# Chess Engine
 
-Add support for FEN stringsLinks to an external site. to your game setup so that instead of the current way you are setting up your game board you are setting it up with a call similar to the following call.
+A high-performance C++ chess implementation featuring bitboard-based move generation and an AI opponent using negamax search with alpha-beta pruning.
 
-FENtoBoard("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
+## Features
 
-Your routine should be able to take just the board position portion of a FEN string, or the entire FEN string like so:
+### Core Engine
+- Complete chess rules implementation
+- Legal move validation and generation
+- Check/checkmate detection
+- Draw detection (stalemate, insufficient material, 50-move rule)
+- FEN notation support for board state serialization
 
-FENtoBoard("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
+### AI System
+- Configurable search depth
+- Negamax algorithm with alpha-beta pruning
+- Position evaluation with material and positional scoring
+- Move ordering for search efficiency
 
-(you can ignore the end for now)
+### Performance Optimizations
+- Bitboard representation for efficient piece operations
+- Magic bitboards for sliding pieces (rooks, bishops, queens)
+- Pre-calculated attack tables
+- Efficient board state representation
+- Fast bit scanning using compiler intrinsics
 
-This will allow you to quickly check that your castling, promotion and en passant code is working.
+## Project Structure
+
+### Core Files
+
+| File | Description |
+|------|-------------|
+| `Chess.h` | Main game class inheriting from Game base class |
+| `GameState.h` | Board state representation and move generation |
+| `Bitboard.h` | Bitboard implementation with fast bit operations |
+| `MagicBitboards.h` | Pre-calculated attack tables for sliding pieces |
+| `Game.h` | Base game class with turn management and AI interface |
+
+### Key Classes
+
+| Class | Purpose |
+|-------|---------|
+| `Chess` | Main game controller and rule enforcement |
+| `GameState` | Board state management and move generation |
+| `BitBoard` | 64-bit board representation with efficient operations |
+| `BitMove` | Compact move representation (4 bytes) |
+| `GameStateData` | Persistent board state data structure |
+
+## Building
+
+### Dependencies
+- C++17 compatible compiler
+- Standard Library
+- OpenGL/ImGui for GUI (in parent project)
