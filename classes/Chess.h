@@ -1,5 +1,6 @@
 #pragma once
 
+#include <sstream>
 #include "Game.h"
 #include "Grid.h"
 #include "ChessPiece.h"
@@ -50,7 +51,8 @@ public:
     // you can make this variable private, it's just grouped with the public methods for convenience
     BitMove _lastAIMove; // Stores the last move calculated by AI (for tournament)
 
-        
+    void bitMovedFromTo(Bit &bit, BitHolder &src, BitHolder &dst) override;
+    void updateAI();
 
 private:
     Bit* PieceForPlayer(const int playerNumber, ChessPiece piece);
@@ -58,7 +60,6 @@ private:
     void FENtoBoard(const std::string& fen);
     char pieceNotation(int x, int y) const;
     std::vector<BitMove> _moves;  // Store current legal moves
-    void bitMovedFromTo(Bit &bit, BitHolder &src, BitHolder &dst) override;
     BitBoard generateKnightMoveBitboard(int square);
     BitBoard generateKingMoveBitboard(int square);
     BitBoard generatePawnCaptures(int square, bool isWhite);
@@ -79,11 +80,11 @@ private:
     BitBoard _rookBitboards[64];
     BitBoard _bishopBitboards[64];
     BitBoard _queenBitboards[64];
-    void updateAI();
     int negamax(std::string& state, int depth, int alpha, int beta, int playerColor);
     int evaluateBoard(const std::string& state);
     int _countMoves;
     int posInfinite = 10000;
     int negInfinite = -10000;
-    
+    int _currentPlayer = 0;
+    GameState _gamestate;
 };

@@ -17,7 +17,7 @@ namespace ClassGame {
         Game *game = nullptr;
         bool gameOver = false;
         int gameWinner = -1;
-        
+        TournamentClient *client = nullptr;
         //
         // game starting point
         // this is called by the main render loop in main.cpp
@@ -67,8 +67,23 @@ namespace ClassGame {
                         game->setUpBoard();
                     }
                     if (ImGui::Button("Start Chess")) {
-                        game = new Chess();
-                        game->setUpBoard();
+                    game = new Chess();
+                    game->setUpBoard();
+                    }
+
+                    if (ImGui::Button("AI vs AI"))
+                    {
+                    game = new Chess();
+                    game->_gameOptions.AIPlayer = 0;
+                    game->_gameOptions.AIvsAI = true;
+                    game->setUpBoard();
+                    }
+
+                    if (ImGui::Button("Start Online Tournament")) {
+                    game = new Chess();
+                    game->setUpBoard();
+                    client = new TournamentClient((Chess *)game, ">:333"); // THIS SHOULD BE YOUR BOT NAME
+                    client->connect("13.223.80.180", 5000);
                     }
                 } else {
                     ImGui::Text("Current Player Number: %d", game->getCurrentPlayer()->playerNumber());
@@ -84,12 +99,14 @@ namespace ClassGame {
                 ImGui::End();
 
                 ImGui::Begin("GameWindow");
-                if (game) {
-                    if (game->gameHasAI() && (game->getCurrentPlayer()->isAIPlayer() || game->_gameOptions.AIvsAI))
-                    {
-                        game->updateAI();
-                    }
-                    game->drawFrame();
+                if (client) {
+                client->update();
+                } else if (game) {
+                if (game->gameHasAI() && (game->getCurrentPlayer()->isAIPlayer() || game->_gameOptions.AIvsAI))
+                {
+                game->updateAI();
+                }
+                game->drawFrame();
                 }
                 ImGui::End();
         }

@@ -83,7 +83,7 @@ void Chess::setUpBoard()
     setAIPlayer(1);
     _grid->initializeChessSquares(pieceSize, "boardsquare.png");
     FENtoBoard("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
-
+    _currentPlayer = 0;
     startGame();
 }
 
@@ -266,7 +266,7 @@ bool Chess::canBitMoveFromTo(Bit &bit, BitHolder &src, BitHolder &dst)
 void Chess::bitMovedFromTo(Bit& bit, BitHolder& src, BitHolder& dst) {
     // Clear any cached moves
     // _cachedMoves.clear();
-    
+    _currentPlayer = (_currentPlayer == WHITE) ? BLACK : WHITE;
     // Handle piece capture
     ChessSquare* dstSquare = dynamic_cast<ChessSquare*>(&dst);
     if (dstSquare && dstSquare->bit() && dstSquare->bit()->getOwner() != bit.getOwner()) {
@@ -668,6 +668,14 @@ int Chess::negamax(std::string& state, int depth, int alpha, int beta, int playe
     return bestVal;
 }
 
+int Chess::evaluateBoard(const std::string& state) {
+    int value = 0;
+    for(char ch : state) {
+        value += evaluateScores[ch];
+    }
+    return value;
+}
+
 
 void Chess::updateAI()
 {
@@ -712,7 +720,8 @@ void Chess::updateAI()
         }
         // Make the best move
         if(bestVal != negInfinite) {
-        _lastAIMove = bestMove;
+            _lastAIMove = bestMove;
+        }
     }
 
     if(bestVal != negInfinite) {
@@ -752,13 +761,6 @@ void Chess::updateAI()
     } else {
         std::cout << "AI couldn't find a valid move!" << std::endl;
     }
-}
-int Chess::evaluateBoard(const std::string& state) {
-    int value = 0;
-    for(char ch : state) {
-        value += evaluateScores[ch];
-    }
-    return value;
 }
 
 // Tournament support: Set board from FEN and reinitialize game state for AI
