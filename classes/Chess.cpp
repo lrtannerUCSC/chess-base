@@ -5,6 +5,7 @@
 #include <cmath>
 #include <vector>
 #include <map>
+#include <sstream>
 
 static std::map<char, int> evaluateScores = {
     {'P', 100}, {'p', -100},    // Pawns
@@ -670,16 +671,16 @@ int Chess::negamax(std::string& state, int depth, int alpha, int beta, int playe
 
 void Chess::updateAI()
 {
+    _lastAIMove = BitMove(); // Reset last AI move (add this at the top of updateAI())
     int bestVal = negInfinite;
     BitMove bestMove;
     std::string state = stateString();
     _countMoves = 0;
 
-    // Generate current legal moves for AI (should be Black's turn)
     GameState gameState;
     gameState.init(state.c_str(), BLACK);  // AI is Black
     
-    // Get fresh moves
+
     _moves = gameState.generateAllMoves();
     
     if (_moves.empty()) {
@@ -689,34 +690,31 @@ void Chess::updateAI()
 
     // std::cout << "AI searching through " << _moves.size() << " moves..." << std::endl;
 
-    // Search through current legal moves
+
     for(auto& move : _moves) {
-        // Save the board state
+
         char boardSave = state[move.to];
         char pieceMoving = state[move.from];
 
-        // Make the move on our state copy
         state[move.to] = pieceMoving;
         state[move.from] = '0';
 
-        // Call negamax to evaluate this move
-        // AI is Black, so playerColor = BLACK = -1
-        // After AI moves, it's White's turn
+
         int moveVal = -negamax(state, 4, negInfinite, posInfinite, WHITE);
 
-        // Undo the move
         state[move.from] = pieceMoving;
         state[move.to] = boardSave;
 
-        // Track the best move found
         if (moveVal > bestVal) {
             bestMove = move;
             bestVal = moveVal;
             // std::cout << "New best move: value = " << bestVal << std::endl;
         }
+        // Make the best move
+        if(bestVal != negInfinite) {
+        _lastAIMove = bestMove;
     }
 
-    // Execute the best move on the actual board
     if(bestVal != negInfinite) {
         // std::cout << "AI choosing move after checking " << _countMoves << " positions" << std::endl;
         int srcSquare = bestMove.from;
@@ -734,22 +732,16 @@ void Chess::updateAI()
         BitHolder& src = getHolderAt(srcX, srcY);
         BitHolder& dst = getHolderAt(dstX, dstY);
         
-        // Get the piece to move
         Bit* bit = src.bit();
         
         if (bit) {
-            // IMPORTANT: Use the game system to make the move properly
-            // This ensures turn switching happens correctly
             
-            // First, check if the move is legal
             if (dst.canDropBitAtPoint(bit, ImVec2(0, 0)) && 
                 canBitMoveFromTo(*bit, src, dst)) {
                 
-                // Move the piece through the game system
                 dst.dropBitAtPoint(bit, ImVec2(0, 0));
                 src.setBit(nullptr);
                 
-                // CRITICAL: Call the parent's bitMovedFromTo to switch turns
                 Game::bitMovedFromTo(*bit, src, dst);
                 
                 // std::cout << "AI move completed. Turn should now be White's." << std::endl;
@@ -767,4 +759,90 @@ int Chess::evaluateBoard(const std::string& state) {
         value += evaluateScores[ch];
     }
     return value;
+}
+
+// Tournament support: Set board from FEN and reinitialize game state for AI
+void Chess::setBoardFromFEN(const std::string& fen) {
+ // Parse FEN string - can be full FEN or just piece placement
+std::string piecePlacement = fen;
+std::string activeColor = "w";
+std::string castling = "KQkq";
+std::string enPassant = "-";
+ // Check if this is a full FEN string (has spaces)
+size_t spacePos = fen.find(' ');
+if (spacePos != std::string::npos) {
+ // Parse full FEN
+std::istringstream fenStream(fen);
+ fenStream >> piecePlacement >> activeColor >> castling >> enPassant;
+ }
+ // Set visual board from piece placement
+FENtoBoard(piecePlacement);
+ // Determine current player from FEN
+ _currentPlayer = (activeColor == "w" || activeColor == "W") ? WHITE : BLACK;
+ // Reinitialize game state so AI sees correct board
+_gamestate.init(stateString().c_str(), _currentPlayer);
+ // TODO: Parse castling rights and en passant from FEN for more accurate state
+ // For now, the basic state is sufficient for AI to calculate moves
+ // Generate legal moves for the new position
+ _moves = _gamestate.generateAllMoves();
+std::cout << "[Tournament] Board set from FEN. Player: "
+ << (_currentPlayer == WHITE ? "White" : "Black")
+ << ", Legal moves: " << _moves.size() << std::endl;
+}
+// Tournament support: Generate FEN string from current board
+std::string Chess::getFEN() const {
+std::string fen;
+fen.reserve(90);
+ // Piece placement (from rank 8 to rank 1)
+for (int rank = 7; rank >= 0; --rank) {
+int emptyCount = 0;
+for (int file = 0; file < 8; ++file) {
+char piece = pieceNotation(file, rank);
+if (piece == '0') {
+ emptyCount++;
+ } else {
+if (emptyCount > 0) {
+ fen += std::to_string(emptyCount);
+ emptyCount = 0;
+ }
+ fen += piece;
+ }
+ }
+if (emptyCount > 0) {
+ fen += std::to_string(emptyCount);
+ }
+if (rank > 0) {
+ fen += '/';
+ }
+ }
+ // Active color
+ fen += ' ';
+ fen += (_currentPlayer == WHITE) ? 'w' : 'b';
+ // Castling availability (simplified - always report based on piece positions)
+ fen += ' ';
+std::string castling;
+ // Check if white can castle (king on e1, rooks on a1/h1)
+char e1 = pieceNotation(4, 0);
+char a1 = pieceNotation(0, 0);
+char h1 = pieceNotation(7, 0);
+if (e1 == 'K') {
+if (h1 == 'R') castling += 'K';
+if (a1 == 'R') castling += 'Q';
+ }
+ // Check if black can castle (king on e8, rooks on a8/h8)
+char e8 = pieceNotation(4, 7);
+char a8 = pieceNotation(0, 7);
+char h8 = pieceNotation(7, 7);
+if (e8 == 'k') {
+if (h8 == 'r') castling += 'k';
+if (a8 == 'r') castling += 'q';
+ }
+ fen += castling.empty() ? "-" : castling;
+ // En passant target square (simplified - report as '-')
+ fen += " -";
+ // Halfmove clock (simplified)
+ fen += " 0";
+ // Fullmove number (simplified)
+ fen += " 1";
+return fen;
 }

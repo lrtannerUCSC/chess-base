@@ -6,6 +6,10 @@
 #include "classes/Connect4.h"
 #include "classes/Chess.h"
 
+#define TOURNAMENT_IMPLEMENTATION
+#include "classes/Tournament.h"
+
+
 namespace ClassGame {
         //
         // our global variables
@@ -13,7 +17,7 @@ namespace ClassGame {
         Game *game = nullptr;
         bool gameOver = false;
         int gameWinner = -1;
-
+        
         //
         // game starting point
         // this is called by the main render loop in main.cpp

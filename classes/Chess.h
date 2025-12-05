@@ -40,7 +40,17 @@ public:
     std::string stateString() override;
     void setStateString(const std::string &s) override;
 
-    Grid* getGrid() override { return _grid; }
+    Grid* getGrid() override { return _grid; };
+    // Tournament support methods
+    void setBoardFromFEN(const std::string& fen);
+    BitMove getLastAIMove() const { return _lastAIMove; }
+    std::string getFEN() const;
+    // Get current player color (WHITE=1, BLACK=-1)
+    int getCurrentPlayerColor() const { return _currentPlayer; }
+    // you can make this variable private, it's just grouped with the public methods for convenience
+    BitMove _lastAIMove; // Stores the last move calculated by AI (for tournament)
+
+        
 
 private:
     Bit* PieceForPlayer(const int playerNumber, ChessPiece piece);
@@ -75,4 +85,5 @@ private:
     int _countMoves;
     int posInfinite = 10000;
     int negInfinite = -10000;
+    
 };

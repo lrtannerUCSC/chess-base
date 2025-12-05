@@ -55,6 +55,9 @@
     <ClCompile Include="D:\UCSC Assignments\cmpm123\chess-base\classes\Chess.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="D:\UCSC Assignments\cmpm123\chess-base\classes\GameState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="D:\UCSC Assignments\cmpm123\chess-base\imgui\imgui_impl_dx11.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
